@@ -37,6 +37,7 @@ values."
              )
      c-c++
      javascript
+     ;; org
      sql
      markdown
      (ibuffer :variables
@@ -403,6 +404,7 @@ you should place your code here."
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
   ;; Workaround for org-mode export
+  ;; Need to manually reload .spaceamacs to load org-mode properly
   ;; https://github.com/yjwen/org-reveal/issues/171#issuecomment-168372894
   (let ((current-prefix-arg 1))
     (call-interactively 'org-reload))
