@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# To symlink dotfiles
+
+source ./utils.sh
+
+DOTFILES_DIRECTORY="${HOME}/.dotfiles"
+
+link() {
+    # Force create/replace the symlink.
+    ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+}
+
+mirrorfiles() {
+    # Copy `.gitconfig`.
+    # Any global git commands in `~/.bash_profile.local` will be written to
+    # `.gitconfig`. This prevents them being committed to the repository.
+    rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
+
+    # Create the necessary symbolic links between the `.dotfiles` and `HOME`
+    # directory. The `bash_profile` sources other files directly from the
+    # `.dotfiles` repository.
+    link "shell/bashrc"        ".bashrc"
+    link "shell/bash_profile"  ".bash_profile"
+    link "git/gitignore" ".gitignore"
+    link "git/gitconfig" ".gitconfig"
+    link "spacemacs" ".spacemacs"
+    link "ispell_english" ".ispell_english"
+
+    echo "Dotfiles update complete!"
+}
+
+# Ask before potentially overwriting files
+seek_confirmation "Warning: This step may overwrite your existing dotfiles."
+
+if is_confirmed; then
+    mirrorfiles
+    source ${HOME}/.bash_profile
+else
+    printf "Aborting...\n"
+    exit 1
+fi

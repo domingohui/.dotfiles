@@ -1,0 +1,24 @@
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+.vimrc
+
+# session
+Session.vim
+
+# temporary
+.netrwhist
+*~
+
+# auto-generated tag files
+tags
+
+# Thumbnails
+._*
+
+*.DS_Store
+
+# Idea
+.idea/

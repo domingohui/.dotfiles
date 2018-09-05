@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+	email = email@email.com
+	signingkey = abc
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = /Users/domingohui/.gitignore
+[diff]
+    tool = mvimdiff
+[color]
+    # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
+    ui = auto
+    interactive = auto
+
+[difftool]
+    prompt = false
+
+[pretty]
+    # tut: http://gitimmersion.com/lab_10.html
+    # ref: http://linux.die.net/man/1/git-log
+    # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
+    nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
