@@ -27,9 +27,13 @@
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(ocaml
+   '(
      html
      ;; yaml
+     (python :variables
+             python-backend 'anaconda
+             )
+
      (c-c++ :variables
             c-c++-enable-clang-support t
             )
@@ -44,12 +48,12 @@
             latex-enable-folding t
             latex-enable-auto-fill t
             )
-     ;; (scala :variables
-     ;;        scala-auto-start-ensime t
-     ;;        scala-auto-insert-asterisk-in-comments t
-     ;;        scala-enable-eldoc t ;; show type at cursor
-     ;;        scala-indent:use-javadoc-style t
-     ;;        )
+     (scala :variables
+            scala-auto-start-ensime t
+            scala-auto-insert-asterisk-in-comments t
+            scala-indent:use-javadoc-style t
+            ensime-print-errors-at-point t
+            )
      helm
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
@@ -65,7 +69,7 @@
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
-            shell-default-shell 'shell
+            shell-default-shell 'term
             )
      ;; spell-checking
      (spell-checking :variables
