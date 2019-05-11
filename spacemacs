@@ -28,18 +28,17 @@
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
-     ;; yaml
-     (python :variables
-             python-backend 'anaconda
-             )
-
+     sml
+     (go :variables
+         go-tab-width 4
+         )
+     python
+     haskell
      (c-c++ :variables
             c-c++-enable-clang-support t
             )
      javascript
      org
-     sql
      markdown
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
@@ -49,10 +48,10 @@
             latex-enable-auto-fill t
             )
      (scala :variables
-            scala-auto-start-ensime t
-            scala-auto-insert-asterisk-in-comments t
-            scala-indent:use-javadoc-style t
-            ensime-print-errors-at-point t
+            ;; scala-auto-start-ensime t
+            ;; scala-auto-insert-asterisk-in-comments t
+            ;; scala-enable-eldoc t ;; show type at cursor
+            ;; scala-indent:use-javadoc-style t
             )
      helm
      (auto-completion :variables
@@ -65,7 +64,6 @@
      ;; better-defaults
      emacs-lisp
      git
-     markdown
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
@@ -478,6 +476,9 @@ you should place your code here."
   (add-hook 'after-init-hook #'global-flycheck-mode)
   (setq-default flycheck-pos-tip-mode t)
 
+  ;; Load flycheck for sml
+  (load-file "~/.emacs.d/private/flycheck-sml.el")
+
   ;; Remap :q to closing a window
   (evil-ex-define-cmd "q[uit]" 'kill-this-buffer)
 
@@ -487,6 +488,20 @@ you should place your code here."
   (setq display-time-default-load-average nil)  ; don't show load average
   (setq display-time-24hr-format nil)
   (display-time-mode 1)                         ; show time in mode line on startup
+
+  ;; Turn on auto-fill-mode for all certain major modes
+  (dolist (major-hook
+           '(text-mode-hook
+             c++-mode-hook
+             c-mode-hook
+             python-mode-hook
+             sml-mode-hook
+             haskell-mode-hook
+             ))
+    (add-hook major-hook 'turn-on-auto-fill)
+    )
+  (setq-default fill-column 80)
+
 
   (global-company-mode)
 
@@ -598,15 +613,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(ansi-color-names-vector
-   (vector "#515151" "#f2777a" "#99cc99" "#ffcc66" "#6699cc" "#cc99cc" "#66cccc" "#cccccc"))
- '(beacon-color "#f2777a")
  '(evil-want-Y-yank-to-eol nil)
- '(fci-rule-color "#515151")
- '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
- '(frame-background-mode (quote dark))
  '(org-entities-user
    (quote
     (("ncong" "$\\ncong$" nil "&#8774" "" "" "")
@@ -618,31 +625,7 @@ This function is called at the very end of Spacemacs initialization."
      ("triangleleft" "$\\triangleleft$" nil "&#8882" "" "" ""))))
  '(package-selected-packages
    (quote
-    (ample-zen-theme disaster company-c-headers cmake-mode clang-format web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data ibuffer-projectile company-auctex auctex org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot company company-emacs-eclim engine-mode evil-smartparens xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic smeargle orgit magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-commentary diff-hl company-tern dash-functional tern company-statistics auto-yasnippet auto-dictionary ac-ispell auto-complete web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode noflet ensime yasnippet sbt-mode scala-mode sql-indent mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
- '(pos-tip-background-color "#36473A")
- '(pos-tip-foreground-color "#FFFFC8")
- '(vc-annotate-background nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#f2777a")
-     (40 . "#f99157")
-     (60 . "#ffcc66")
-     (80 . "#99cc99")
-     (100 . "#66cccc")
-     (120 . "#6699cc")
-     (140 . "#cc99cc")
-     (160 . "#f2777a")
-     (180 . "#f99157")
-     (200 . "#ffcc66")
-     (220 . "#99cc99")
-     (240 . "#66cccc")
-     (260 . "#6699cc")
-     (280 . "#cc99cc")
-     (300 . "#f2777a")
-     (320 . "#f99157")
-     (340 . "#ffcc66")
-     (360 . "#99cc99"))))
- '(vc-annotate-very-old-color nil))
+    (ediprolog ob-sml sml-mode disaster company-c-headers cmake-mode clang-format web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data ibuffer-projectile company-auctex auctex org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download htmlize gnuplot company company-emacs-eclim engine-mode evil-smartparens xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic smeargle orgit magit-gitflow helm-gitignore helm-company helm-c-yasnippet gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-commentary diff-hl company-tern dash-functional tern company-statistics auto-yasnippet auto-dictionary ac-ispell auto-complete web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc coffee-mode noflet ensime yasnippet sbt-mode scala-mode sql-indent mmm-mode markdown-toc markdown-mode gh-md ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
