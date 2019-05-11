@@ -477,7 +477,7 @@ you should place your code here."
   (setq-default flycheck-pos-tip-mode t)
 
   ;; Load flycheck for sml
-  (load-file "~/.emacs.d/private/flycheck-sml.el")
+  ;;(load-file "~/.emacs.d/private/flycheck-sml.el")
 
   ;; Remap :q to closing a window
   (evil-ex-define-cmd "q[uit]" 'kill-this-buffer)
