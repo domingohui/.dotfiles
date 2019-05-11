@@ -28,6 +28,8 @@ mirrorfiles() {
     link "ispell_english" ".ispell_english"
 
     echo "Dotfiles update complete!"
+    echo "Remember to update gpg signing key for git."
+    echo "  gpg --list-keys"
 }
 
 # Ask before potentially overwriting files

@@ -1,3 +1,6 @@
+# nix
+export PATH="$HOME/.nix-profile/bin:$PATH"
+
 # ~/bin
 export PATH="$HOME/bin/:$PATH"
 
