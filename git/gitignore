@@ -5,6 +5,11 @@
 [._]sw[a-p]
 .vimrc
 
+# Latex
+*.aux
+*.log
+*.out
+
 # session
 Session.vim
 
@@ -22,3 +27,6 @@ tags
 
 # Idea
 .idea/
+
+*.o
+*.d
