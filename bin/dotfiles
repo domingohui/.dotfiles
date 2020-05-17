@@ -22,10 +22,13 @@ mirrorfiles() {
     # `.dotfiles` repository.
     link "shell/bashrc"        ".bashrc"
     link "shell/bash_profile"  ".bash_profile"
-    link "git/gitignore" ".gitignore"
-    link "git/gitconfig" ".gitconfig"
-    link "spacemacs" ".spacemacs"
-    link "ispell_english" ".ispell_english"
+    link "shell/bash_aliases"  ".bash_aliases"
+    link "git/gitignore"       ".gitignore"
+    link "git/gitconfig"       ".gitconfig"
+    link "ispell_english"      ".ispell_english"
+    link "vimrc"               ".vimrc"
+    link "emacs/init.el"       ".emacs.d/init.el"
+    link "emacs/elisp/"        ".emacs.d/elisp"
 
     echo "Dotfiles update complete!"
     echo "Remember to update gpg signing key for git."
