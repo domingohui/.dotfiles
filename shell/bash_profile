@@ -1,5 +1,5 @@
 # nix
-export PATH="$HOME/.nix-profile/bin:$PATH"
+if [ -e /Users/domingohui/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/domingohui/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # ~/bin
 export PATH="$HOME/bin/:$PATH"
