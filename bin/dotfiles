@@ -27,8 +27,9 @@ mirrorfiles() {
     link "git/gitconfig"       ".gitconfig"
     link "ispell_english"      ".ispell_english"
     link "vimrc"               ".vimrc"
+    link "emacs/elisp"         ".emacs.d/elisp"
     link "emacs/init.el"       ".emacs.d/init.el"
-    link "emacs/elisp/"        ".emacs.d/elisp"
+    link "nixpkgs"             ".nixpkgs"
 
     echo "Dotfiles update complete!"
     echo "Remember to update gpg signing key for git."

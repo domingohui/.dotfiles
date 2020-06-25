@@ -29,3 +29,4 @@
 (blink-cursor-mode 0)
 
 (provide 'init-ui)
+;;; init-ui.el ends here

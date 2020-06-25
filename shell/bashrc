@@ -1,0 +1,32 @@
+# nix
+if [ -e /Users/domingohui/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/domingohui/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# ~/bin
+export PATH="$HOME/bin/:$PATH"
+
+# Go
+export GOPATH="$HOME/codes/go"
+export PATH="$GOPATH/bin:$HOME/bin:$PATH"
+
+load_dotfiles() {
+    declare -a files=(
+    $HOME/.dotfiles/shell/bash_options # Options
+    $HOME/.dotfiles/shell/bash_exports # Exports
+    $HOME/.dotfiles/shell/bash_aliases # Aliases
+    $HOME/.dotfiles/shell/functions/* # Functions
+    $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
+    $HOME/.dotfiles/shell/bash_paths # Path modifications
+    $HOME/.dotfiles/git/git-completion.bash # Options
+    )
+
+    # if these files are readable, source them
+    for index in ${!files[*]}
+    do
+        if [[ -r ${files[$index]} ]]; then
+            source ${files[$index]}
+        fi
+    done
+}
+
+load_dotfiles
+unset load_dotfiles
