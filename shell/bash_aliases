@@ -1,6 +1,5 @@
 # Emacs
 alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs "$@"'
-alias uw='ssh -Y _@linux.student.cs.uwaterloo.ca'
 
 alias l='ls'
 alias ll='ls -l'
