@@ -6,7 +6,6 @@
   (company-idle-delay .1)
   (company-show-numbers t)
   :hook (after-init . global-company-mode)
-  :config (add-to-list 'company-backends 'company-ghc)
   )
 
 (provide 'init-company)
