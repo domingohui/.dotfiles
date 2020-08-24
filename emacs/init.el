@@ -16,7 +16,7 @@
  '(lsp-keymap-prefix "s-l")
  '(package-selected-packages
    (quote
-    (haskell-mode key-chord auto-highlight-symbol use-package flycheck company company-mode ccls lsp lsp-mode evil aggressive-indent color-theme-sanityinc-tomorrow))))
+    (company-ghc haskell-mode key-chord auto-highlight-symbol use-package flycheck company company-mode ccls lsp lsp-mode evil aggressive-indent color-theme-sanityinc-tomorrow))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,11 +37,13 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp/")
 (require 'interactives)
+(require 'misc)
 (require 'keys)
 (require 'init-key-chord)
 (require 'init-lsp)
 (require 'init-flycheck)
 (require 'init-company)
+(require 'init-company-ghc)
 (require 'init-emacs-ccls)
 (require 'init-themes)
 (require 'init-ui)
@@ -49,4 +51,5 @@
 (require 'init-aggressive-indent)
 (require 'init-auto-highlight-symbol)
 (require 'init-haskell)
-(require 'misc)
+(require 'init-auto-fill)
+(require 'init-org)

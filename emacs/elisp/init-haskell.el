@@ -5,4 +5,4 @@
   (setq flycheck-haskell-hlint-executable "~/.nix-profile/bin/hlint")
   )
 
-  (provide 'init-haskell)
+(provide 'init-haskell)
