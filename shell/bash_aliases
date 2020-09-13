@@ -1,5 +1,7 @@
 # Emacs
-alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs "$@"'
+alias e='emacsclient -a "" -t'
+alias eg='emacsclient -a "" -c -n'
+alias ek='emacsclient -e "(save-buffers-kill-emacs)"'
 
 alias l='ls'
 alias ll='ls -l'
@@ -8,3 +10,4 @@ alias c='g++ -O2 -Wextra -Wunused-variable -Wuninitialized --std=c++17'
 alias gs='git status'
 alias gl='git log --numstat'
 alias gd='git diff --cached'
+alias v='vim'
