@@ -142,6 +142,3 @@ ls_colors() {
 }
 ls_colors
 unset ls_colors
-
-# Git autocomplete
-source ~/.dotfiles/git/git-completion.bash
