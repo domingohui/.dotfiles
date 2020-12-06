@@ -34,6 +34,7 @@
   (require 'use-package))
 
 (add-to-list 'load-path "~/.emacs.d/elisp/")
+(require 'list-funcs)
 (require 'interactives)
 (require 'misc)
 (require 'keys)
