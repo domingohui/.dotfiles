@@ -1,4 +1,5 @@
 (use-package auto-highlight-symbol
+  :ensure t
   :init
   (global-auto-highlight-symbol-mode t)
   )
