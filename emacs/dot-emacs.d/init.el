@@ -53,4 +53,5 @@
 (require 'init-racket)
 (require 'init-auto-fill)
 (require 'init-evil-commentary)
+(require 'init-fill-column)
 (require 'init-org)
