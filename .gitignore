@@ -1,0 +1,3 @@
+# Generated files in emacs config directory
+emacs/*/elpa/
+emacs/*/auto-save-list/
