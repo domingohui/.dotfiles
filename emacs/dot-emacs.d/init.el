@@ -14,7 +14,7 @@
  '(haskell-process-log t)
  '(lsp-keymap-prefix "s-l")
  '(package-selected-packages
-   '(evil-commentary racket-xp racket-mode company-ghci haskell-mode key-chord auto-highlight-symbol use-package flycheck company company-mode ccls lsp lsp-mode evil aggressive-indent color-theme-sanityinc-tomorrow)))
+   '(spacemacs-theme evil-commentary racket-xp racket-mode company-ghci haskell-mode key-chord auto-highlight-symbol use-package flycheck company company-mode ccls lsp lsp-mode evil aggressive-indent color-theme-sanityinc-tomorrow)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
