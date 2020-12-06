@@ -28,5 +28,9 @@ tags
 # Idea
 .idea/
 
+# Generated in compilation
 *.o
 *.d
+
+# Do not ignore the directory `dot-emacs.d`
+!dot-emacs.d/
